@@ -5,7 +5,10 @@ module.exports = {
         const { id } = request.body;
         const ong_id = request.headers.authorizarion;
         
-        const ong = await connection('ongs').where('id',id).select('name').first();
+        const ong = await connection('ongs')
+            .where('id',id)
+            .select('name')
+            .first();
         
         if(!ong)
             return response.status(400).json({ error : "no ong found with this ID. "});
